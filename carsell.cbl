@@ -12,3 +12,7 @@
 	   file section.
 	   fd fic.
 	   01 registo.
+	   		02 data_registo.
+	   			05 dia pic 99.
+	   			05 mes pic 99.
+	   			05 ano pic 9999.
