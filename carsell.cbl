@@ -11,3 +11,4 @@
 	   data division.
 	   file section.
 	   fd fic.
+	   01 registo.
