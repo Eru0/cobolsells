@@ -5,8 +5,9 @@
 	   environment division.
 	   input-output section.
 	   file-control.
-	   		select optional fic assign "HOME.DAT"
+	   		select optional fic assign "LIST.DAT"
 	   		organization is line sequential.
 
 	   data division.
 	   file section.
+	   fd fic.
