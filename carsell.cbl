@@ -23,4 +23,16 @@
 	   		03 contacto    pic 9(9).
 	   		03 ano_fabrico pic 9(4).
 
+	   working-storage section.
+
+	   screen section.
+	   01 cls blank screen.
+
+	   procedure division.
+	   ecra.
+	   registo.
+	   escrita.
+	   fim.
+	   stop run.
+
 
