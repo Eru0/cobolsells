@@ -24,14 +24,36 @@
 	   		03 ano_fabrico pic 9(4).
 
 	   working-storage section.
+	   77 opcao pic 9.
 
 	   screen section.
 	   01 cls blank screen.
 
 	   procedure division.
 	   ecra.
+	   		perform until opcao = 0
+	   		evaluate opcao
+	   			when 1 go to registo
+	   			when 2 go to pesquisa
+	   			when 3 go to escrita
+	   			when 4 go to marcas
+	   			when 5 go to valores
+	   			when 6 go to velhos
+	   			when 7 go to vendas_marca
+	   			when 8 go to total_marca
+	   			when 9 go to maior.
+	   			when other go to ecra
+	   		end-evaluate
+	  		end-perform.
 	   registo.
+	   pesquisa.
 	   escrita.
+	   marcas.
+	   valores.
+	   velhos.
+	   vendas_marca.
+	   total_marca.
+	   maior.
 	   fim.
 	   stop run.
 
