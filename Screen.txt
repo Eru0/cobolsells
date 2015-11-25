@@ -1,0 +1,18 @@
+SCREEN SECTION.
+	  01 CABEC.	
+          05 CLS BLANK SCREEN.	  
+          05 LISTA. 
+              07 VALUE "NOME" 
+			  LINE 1 COL 1.
+              07 VALUE "CONTACTO" 
+			  LINE 1 COL 18.
+			  07 VALUE "MARCA" 
+			  LINE 1 COL 31.
+              07 VALUE "MODELO"
+			  LINE 1 COL 44.
+              07 VALUE "ANO"
+			  LINE 1 COL 56.
+              07 VALUE "MATR"
+			  LINE 1 COL 61.
+			  07 VALUE "KM"
+			  LINE 1 COL 68.
