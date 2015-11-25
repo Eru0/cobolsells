@@ -29,14 +29,32 @@
 	   77 opcao pic 9.
 	   77 pausa pic x.
 	   77 wmatr pic x(6).
+	   77 wmarc pic a(15).
 	   77 wkm   pic z9(5).
-	   77 wprec pic z9(5).9(2).
+	   77 wprec pic z9(5).99.
+	   77 soma  pic 9(7)v99.
 	   77 cntar pic 99.
 	   77 linha pic 99.
 	   77 pagin pic 99 value 1.
 
 	   screen section.
-	   01 cls blank screen.
+	   01 cabec.	
+          05 cls blank screen.	  
+          05 lista. 
+              07 value "nome" 
+			  line 1 col 1.
+              07 value "contacto" 
+			  line 1 col 18.
+			  07 value "marca" 
+			  line 1 col 31.
+              07 value "modelo"
+			  line 1 col 44.
+              07 value "ano"
+			  line 1 col 56.
+              07 value "matr"
+			  line 1 col 61.
+			  07 value "km"
+			  line 1 col 68.
 
 	   procedure division.
 	   ecra.
@@ -103,6 +121,8 @@
 	   		display cls.
 	   		display "Qual a matricula?: ".
 	   		accept wmatr.
+	   		display cls.
+	   		display lista.
 	   		open input fic.
 	   		perform until registo = high-values
 	   			read fic
@@ -110,15 +130,54 @@
 	   			end-read
 	   			if not registo = high-values
 	   				if matricula = wmatr
-	   				display 
+	   				display nome space contacto space marca
+	   				space modelo space ano space matricula space km
+	   				end-if
+	   			end-if
+	   		end-perform.
+	   		close fic.
+	   		move low-values to registo.
+	   		accept pausa.
 	   		go ecra.
 	   tudo.
 	   		go ecra.
 	   marcas.
-	   		go ecra.
+	   		display cls.
+	   		display "Qual a marca?: ".
+	   		accept wmarc.
+	   		open input fic.
+	   		perform until registo = high-values
+	   			read fic
+	   				at end move high-values to registo
+	   			end-read
+	   			if not registo = high-values
+	   				if marca = wmarc
+	   				display
+	   				end-if
+	   			end-if
+	   		end-perform.
+	   		close fic.
+	   		move low-values to registo.
+	   		accept pausa.
+	   		go ecra.	
 	   valores.
 	   		go ecra.
 	   velhos.
+	   		display cls.
+	   		open input fic.
+	   		perform until registo = high-values
+	   			read fic
+	   				at end move high-values to registo
+	   			end-read
+	   			if not registo = high-values
+	   				if ano-fabrico < 2000
+	   				display
+	   				end-if
+	   			end-if
+	   		end-perform.
+	   		close fic.
+	   		move low-values to registo.
+	   		accept pausa.
 	   		go ecra.
 	   vendas-marca.
 	   		go ecra.
@@ -128,6 +187,3 @@
 	   		go ecra.
 	   fim.
 	   		stop run.
-
-
-	   		display dia"/"mes"/"ano 
