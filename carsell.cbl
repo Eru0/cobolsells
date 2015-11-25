@@ -41,20 +41,35 @@
 	   01 cabec.	
           05 cls blank screen.	  
           05 lista. 
-              07 value "nome" 
+              07 value "Nome" 
 			  line 1 col 1.
-              07 value "contacto" 
+              07 value "Contacto" 
 			  line 1 col 18.
-			  07 value "marca" 
+			  07 value "Marca" 
 			  line 1 col 31.
-              07 value "modelo"
+              07 value "Modelo"
 			  line 1 col 44.
-              07 value "ano"
+              07 value "Ano"
 			  line 1 col 56.
               07 value "matr"
 			  line 1 col 61.
 			  07 value "km"
 			  line 1 col 68.
+			  07 value "-----------------------------------"
+			  line 2 col 15.
+		05 vendas.
+			  07 value "Marca"
+			  line 1 col 1.
+			  07 value "Modelo"
+			  line 1 col 16.
+			  07 value "Ano"
+			  line 1 col 26.
+			  07 value "Km"
+			  line 1 col 31.
+			  07 value "Preco"
+			  line 1 col 37.
+			  07 value "-----------------------------------"
+			  line 2 col 15.
 
 	   procedure division.
 	   ecra.
