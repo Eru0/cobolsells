@@ -28,17 +28,18 @@
 	   working-storage section.
 	   77 opcao pic 9.
 	   77 pausa pic x.
+	   77 wnome pic a(20).
 	   77 wmatr pic x(6).
 	   77 wmarc pic a(15).
+	   77 wmode pic x(10).
 	   77 wkm   pic z(6).
 	   77 wprec pic z(6).99.
 	   77 wiva  pic z(6).99.
 	   77 wsoma pic z(7).99.
 	   77 soma  pic 9(7)v99.
 	   77 iva   pic 9(5)v99.
+	   77 max   pic 9(6)v99.
 	   77 cntar pic 99.
-	   77 linha pic 99.
-	   77 pagin pic 99 value 1.
 
 	   screen section.
 	   01 cabec.	
@@ -67,17 +68,17 @@
 			  07 value "Marca"
 			  line 1 col 1.
 			  07 value "Modelo"
-			  line 1 col 16.
+			  line 1 col 17.
 			  07 value "Ano"
-			  line 1 col 26.
+			  line 1 col 28.
 			  07 value "Km"
-			  line 1 col 31.
+			  line 1 col 34.
 			  07 value "Preco"
-			  line 1 col 37.
+			  line 1 col 42.
 			  07 value "IVA"
-			  line 1 col 47.
+			  line 1 col 53.
 			  07 value "Pr/IVA"
-			  line 1 col 55.
+			  line 1 col 63.
 			  07 value 
 			  "--------------------------------------------------"
 			  line 2 col 1.
@@ -272,6 +273,7 @@
 	   				if marca = wmarc
 	   				compute iva = preco * 0.23
 	   				compute soma = preco + iva
+	   				compute cntar = cntar + 1
 	   				move iva to wiva
 	   				move preco to wprec
 	   				move soma to wsoma
@@ -283,6 +285,7 @@
 	   		end-perform.
 	   		close fic.
 	   		move low-values to registo.
+	   		display "Foram Vendidos na totalidade: " cntar.
 	   		accept pausa.
 	   		go ecra.
 	   total-marca.
@@ -311,6 +314,29 @@
 	   		accept pausa.
 	   		go ecra.
 	   maior.
+	   		display cls.
+	   		open input fic.
+	   		perform until registo = high-values
+	   			read fic
+	   				at end move high-values to registo
+	   			end-read
+	   			if not registo = high-values
+	   				if  preco > max
+	   				move preco to max
+	   				move marca to wmarc
+	   				move matricula to wmatr
+	   				move modelo to wmode
+	   				move nome to wnome
+	   				end-if
+	   			end-if
+	   		end-perform.
+	   		close fic.
+	   		move low-values to registo.
+	   		display "A Melhor venda foi".
+	   		move max to wprec.
+	   		display wnome space wmatr space wmarc space wmode
+	   		space wprec.
+	   		accept pausa.
 	   		go ecra.
 	   fim.
 	   		stop run.
