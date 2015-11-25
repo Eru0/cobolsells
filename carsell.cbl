@@ -299,7 +299,6 @@
 	   			if not registo = high-values
 	   				if marca = wmarc
 	   				compute soma = soma + preco
-	   				display "A Marca Vendeu:"
 	   				end-if
 	   			end-if
 	   		end-perform.
