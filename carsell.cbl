@@ -29,6 +29,11 @@
 	   77 opcao pic 9.
 	   77 pausa pic x.
 	   77 wmatr pic x(6).
+	   77 wkm   pic z9(5).
+	   77 wprec pic z9(5).9(2).
+	   77 cntar pic 99.
+	   77 linha pic 99.
+	   77 pagin pic 99 value 1.
 
 	   screen section.
 	   01 cls blank screen.
@@ -53,7 +58,7 @@
 	   		evaluate opcao
 	   			when 1 go to registos
 	   			when 2 go to pesquisa
-	   			when 3 go to escrita
+	   			when 3 go to tudo
 	   			when 4 go to marcas
 	   			when 5 go to valores
 	   			when 6 go to velhos
@@ -107,7 +112,7 @@
 	   				if matricula = wmatr
 	   				display 
 	   		go ecra.
-	   escrita.
+	   tudo.
 	   		go ecra.
 	   marcas.
 	   		go ecra.
@@ -125,3 +130,4 @@
 	   		stop run.
 
 
+	   		display dia"/"mes"/"ano 
