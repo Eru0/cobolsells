@@ -33,7 +33,7 @@
 	   77 wkm   pic z(6).
 	   77 wprec pic z(6).99.
 	   77 wiva  pic z(6).99.
-	   77 wsoma pic z(6).99.
+	   77 wsoma pic z(7).99.
 	   77 soma  pic 9(7)v99.
 	   77 iva   pic 9(5)v99.
 	   77 cntar pic 99.
@@ -298,16 +298,15 @@
 	   			end-read
 	   			if not registo = high-values
 	   				if marca = wmarc
-	   				compute iva = preco * 0.23
-	   				compute soma = preco + iva
-	   				move iva to wiva
-	   				move preco to wprec
-	   				move soma to wsoma
-	   				move km to wkm
+	   				compute soma = soma + preco
 	   				display "A Marca Vendeu:"
 	   				end-if
 	   			end-if
 	   		end-perform.
+	   		display "A Marca Vendeu C/IVA:"
+	   		compute soma = soma * 1.23.
+	   		move soma to wsoma.
+	   		display wsoma.
 	   		close fic.
 	   		move low-values to registo.
 	   		accept pausa.
