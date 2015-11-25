@@ -33,6 +33,7 @@
 	   77 wkm   pic z9(5).
 	   77 wprec pic z9(5).99.
 	   77 soma  pic 9(7)v99.
+	   77 iva   pic 9(5)v99.
 	   77 cntar pic 99.
 	   77 linha pic 99.
 	   77 pagin pic 99 value 1.
@@ -71,6 +72,10 @@
 			  line 1 col 31.
 			  07 value "Preco"
 			  line 1 col 37.
+			  07 value "IVA"
+			  line 1 col 47.
+			  07 value "Pr/IVA"
+			  line 1 col 55.
 			  07 value 
 			  "--------------------------------------------------"
 			  line 2 col 1.
@@ -162,6 +167,22 @@
 	   		accept pausa.
 	   		go ecra.
 	   tudo.
+	   		display cls.
+	   		display lista.
+	   		open input fic.
+      		perform until registo = high-values
+      			read fic
+      				at end move high-values to registo
+      		    end-read
+      		    if not registo = high-values
+      		    	display nome space contacto space marca
+	   				space modelo space ano-fabrico space 
+	   				matricula space km
+      		    end-if
+      		end-perform.
+      		close fic.
+      		move low-values to registo.
+      		accept pausa.
 	   		go ecra.
 	   marcas.
 	   		display cls.
@@ -187,6 +208,20 @@
 	   		accept pausa.
 	   		go ecra.	
 	   valores.
+	   		display cls.
+	   		display vendas.
+	   		open input fic.
+	   		perform until registo = high-values
+	   			read fic
+	   				at end move high-values to registo
+	   			end-read
+	   			if not registo = high-values
+	   				compute iva = preco * 0.23
+	   				compute soma = preco + iva
+	   				display marca space modelo space ano-fabrico
+	   				space 
+	   			end-if
+	   		end-perform.
 	   		go ecra.
 	   velhos.
 	   		display cls.
