@@ -131,7 +131,8 @@
 	   			if not registo = high-values
 	   				if matricula = wmatr
 	   				display nome space contacto space marca
-	   				space modelo space ano space matricula space km
+	   				space modelo space ano-fabrico space 
+	   				matricula space km
 	   				end-if
 	   			end-if
 	   		end-perform.
@@ -152,7 +153,7 @@
 	   			end-read
 	   			if not registo = high-values
 	   				if marca = wmarc
-	   				display
+	   				display "NADA"
 	   				end-if
 	   			end-if
 	   		end-perform.
@@ -171,7 +172,7 @@
 	   			end-read
 	   			if not registo = high-values
 	   				if ano-fabrico < 2000
-	   				display
+	   				display "NADA"
 	   				end-if
 	   			end-if
 	   		end-perform.
