@@ -30,8 +30,10 @@
 	   77 pausa pic x.
 	   77 wmatr pic x(6).
 	   77 wmarc pic a(15).
-	   77 wkm   pic z9(5).
-	   77 wprec pic z9(5).99.
+	   77 wkm   pic z(6).
+	   77 wprec pic z(6).99.
+	   77 wiva  pic z(6).99.
+	   77 wsoma pic z(6).99.
 	   77 soma  pic 9(7)v99.
 	   77 iva   pic 9(5)v99.
 	   77 cntar pic 99.
@@ -156,9 +158,10 @@
 	   			end-read
 	   			if not registo = high-values
 	   				if matricula = wmatr
+	   				move km to wkm
 	   				display nome space contacto space marca
 	   				space modelo space ano-fabrico space 
-	   				matricula space km
+	   				matricula space wkm
 	   				end-if
 	   			end-if
 	   		end-perform.
@@ -175,9 +178,10 @@
       				at end move high-values to registo
       		    end-read
       		    if not registo = high-values
+      		    	move km to wkm
       		    	display nome space contacto space marca
 	   				space modelo space ano-fabrico space 
-	   				matricula space km
+	   				matricula space wkm
       		    end-if
       		end-perform.
       		close fic.
@@ -197,9 +201,10 @@
 	   			end-read
 	   			if not registo = high-values
 	   				if marca = wmarc
+	   				move km to wkm
 	   				display nome space contacto space marca
 	   				space modelo space ano-fabrico space 
-	   				matricula space km
+	   				matricula space wkm
 	   				end-if
 	   			end-if
 	   		end-perform.
@@ -218,10 +223,17 @@
 	   			if not registo = high-values
 	   				compute iva = preco * 0.23
 	   				compute soma = preco + iva
+	   				move iva to wiva
+	   				move preco to wprec
+	   				move soma to wsoma
+	   				move km to wkm
 	   				display marca space modelo space ano-fabrico
-	   				space 
+	   				space wkm space wprec space wiva space wsoma
 	   			end-if
 	   		end-perform.
+	   		close fic.
+	   		move low-values to registo.
+	   		accept pausa.
 	   		go ecra.
 	   velhos.
 	   		display cls.
@@ -233,9 +245,10 @@
 	   			end-read
 	   			if not registo = high-values
 	   				if ano-fabrico < 2000
+	   				move km to wkm
 	   				display nome space contacto space marca
 	   				space modelo space ano-fabrico space 
-	   				matricula space km
+	   				matricula space wkm
 	   				end-if
 	   			end-if
 	   		end-perform.
@@ -244,8 +257,60 @@
 	   		accept pausa.
 	   		go ecra.
 	   vendas-marca.
+	   		display cls.
+	   		move 0 to soma.
+	   		display "Qual a marca?: ".
+	   		accept wmarc.
+	   		display cls.
+	   		display vendas.
+	   		open input fic.
+	   		perform until registo = high-values
+	   			read fic
+	   				at end move high-values to registo
+	   			end-read
+	   			if not registo = high-values
+	   				if marca = wmarc
+	   				compute iva = preco * 0.23
+	   				compute soma = preco + iva
+	   				move iva to wiva
+	   				move preco to wprec
+	   				move soma to wsoma
+	   				move km to wkm
+	   				display marca space modelo space ano-fabrico
+	   				space wkm space wprec space wiva space wsoma
+	   				end-if
+	   			end-if
+	   		end-perform.
+	   		close fic.
+	   		move low-values to registo.
+	   		accept pausa.
 	   		go ecra.
 	   total-marca.
+	   		display cls.
+	   		move 0 to soma.
+	   		display "Qual a marca?: ".
+	   		accept wmarc.
+	   		display cls.
+	   		open input fic.
+	   		perform until registo = high-values
+	   			read fic
+	   				at end move high-values to registo
+	   			end-read
+	   			if not registo = high-values
+	   				if marca = wmarc
+	   				compute iva = preco * 0.23
+	   				compute soma = preco + iva
+	   				move iva to wiva
+	   				move preco to wprec
+	   				move soma to wsoma
+	   				move km to wkm
+	   				display "A Marca Vendeu:"
+	   				end-if
+	   			end-if
+	   		end-perform.
+	   		close fic.
+	   		move low-values to registo.
+	   		accept pausa.
 	   		go ecra.
 	   maior.
 	   		go ecra.
