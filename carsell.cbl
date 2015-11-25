@@ -44,19 +44,22 @@
               07 value "Nome" 
 			  line 1 col 1.
               07 value "Contacto" 
-			  line 1 col 18.
+			  line 1 col 22.
 			  07 value "Marca" 
 			  line 1 col 31.
               07 value "Modelo"
-			  line 1 col 44.
+			  line 1 col 47.
               07 value "Ano"
-			  line 1 col 56.
-              07 value "matr"
-			  line 1 col 61.
-			  07 value "km"
-			  line 1 col 68.
-			  07 value "-----------------------------------"
-			  line 2 col 15.
+			  line 1 col 59.
+              07 value "Matr"
+			  line 1 col 63.
+			  07 value "Km"
+			  line 1 col 71.
+			  07 value 
+			  "--------------------------------------------------"
+			  line 2 col 1.
+			  07 value "---------------------------"
+			  line 2 col 51.
 		05 vendas.
 			  07 value "Marca"
 			  line 1 col 1.
@@ -68,8 +71,11 @@
 			  line 1 col 31.
 			  07 value "Preco"
 			  line 1 col 37.
-			  07 value "-----------------------------------"
-			  line 2 col 15.
+			  07 value 
+			  "--------------------------------------------------"
+			  line 2 col 1.
+			  07 value "---------------------------"
+			  line 2 col 51.
 
 	   procedure division.
 	   ecra.
@@ -161,6 +167,8 @@
 	   		display cls.
 	   		display "Qual a marca?: ".
 	   		accept wmarc.
+	   		display cls.
+	   		display lista.
 	   		open input fic.
 	   		perform until registo = high-values
 	   			read fic
@@ -168,7 +176,9 @@
 	   			end-read
 	   			if not registo = high-values
 	   				if marca = wmarc
-	   				display "NADA"
+	   				display nome space contacto space marca
+	   				space modelo space ano-fabrico space 
+	   				matricula space km
 	   				end-if
 	   			end-if
 	   		end-perform.
@@ -180,6 +190,7 @@
 	   		go ecra.
 	   velhos.
 	   		display cls.
+	   		display lista.
 	   		open input fic.
 	   		perform until registo = high-values
 	   			read fic
@@ -187,7 +198,9 @@
 	   			end-read
 	   			if not registo = high-values
 	   				if ano-fabrico < 2000
-	   				display "NADA"
+	   				display nome space contacto space marca
+	   				space modelo space ano-fabrico space 
+	   				matricula space km
 	   				end-if
 	   			end-if
 	   		end-perform.
